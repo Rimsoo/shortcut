@@ -11,14 +11,14 @@ createDesktop()
 
 name=$3
 path=$DIR_1
-path2=$DIR_2"> "$HOME/.local/bin/$3"
+path2=$DIR_2"> "$HOME/.local/bin/$name"
 	echo 'if [[ -z $1 ]]; then
 	exec "$path"
 elif [[ $1 = "-u" ]]; then
 	choice=n
 	while [ ! -z "$choice" ]
 	do
-		read -p "Do you really want to delete Coffee break ? (Y/n) " choice
+		read -p "Do you really want to delete $name shortcut ? (Y/n) " choice
 		if [ "$choice" = n ]; then
 			echo "Quit..."
 			exit
