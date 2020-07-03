@@ -27,13 +27,11 @@ elif [[ $1 = "-u" ]]; then
 		fi
 	done
 	echo "Uninstalling in progress..."
-	rm -rf "$path"
-    rm -rf "$path2"
 	rm -f "$HOME/.local/share/applications/$name.desktop"
 	rm -f "$HOME/.local/bin/$name"
 	echo "Done."
 elif [[ $1 = "-h" ]]; then
-	echo -e "\nUse -u to uninstall :
+	echo -e "\nUse -u to uninstall the shortcut:
 	$name -u\n"
 fi' >> "$HOME/.local/bin/$3"
 	chmod 711 "$HOME/.local/bin/$3"
@@ -50,24 +48,27 @@ StartupNotify=true  #notification de démarrage ou non (false ou true)
 Categories=Game" > "$HOME/.local/share/applications/$3.desktop"
 }
 
-if [ $# -eq 3 ]  
+if [ -e $1 ]
 then
-    if [ -e $1 ]
-    then
-        if [ -e $2]
+	if [ $# -eq 3 ]  
+	then
+        if [ -e $3]
         then
-            if [ ${2: -4} == ".jpg" ] || [ ${2: -4} == ".png" ] || [ ${2: -4} == ".ico" ] || [ ${2: -4} == ".svg" ]
+            if [ ${3: -4} == ".jpg" ] || [ ${3: -4} == ".png" ] || [ ${3: -4} == ".ico" ] || [ ${3: -4} == ".svg" ]
             then
-                createDesktop "$1" "$2" "$3"
+                createDesktop "$1" "$3" "$"
             else
-                echo "Second parameter need to be an icon.jpg/png/svg/ico file"
+                echo "Third parameter need to be an icon.jpg/png/svg/ico file"
             fi
         else
             echo "$2 not found."
         fi
+	elif [ $# -eq 2 ] 
+	then
+		createDesktop "$1" "/usr/share/pixmaps/debian-logo.png" "$2" 
     else
-        echo "$1 not found."
+   		echo "Usage : shortcut executable name_of_shortcut [icon] "
     fi
 else
-    echo "Usage : shortcut 'executable' 'icon' 'name_of_shortcut'"
+	echo "$1 not found."
 fi
