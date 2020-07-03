@@ -21,4 +21,4 @@ You can now delete the project :
 `icon` : [Optional] The icon of the shortcut (format : .ico, .png, .jpg, .svg)
 
 ### Delete shortcut
-`shortcut -u`
+`name_of_shortcut -u`
