@@ -11,7 +11,7 @@ createDesktop()
 
 name=$3
 path=$DIR_1
-path2=$DIR_2"> "$HOME/.local/bin/$name"
+path2=$DIR_2"> "$HOME/.local/bin/$3"
 	echo 'if [[ -z $1 ]]; then
 	exec "$path"
 elif [[ $1 = "-u" ]]; then
