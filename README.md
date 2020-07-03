@@ -2,13 +2,13 @@
 Create a command line and graphic shortcut for linux executables.
 
 ## Install 
-clone the project :
-`git clone https://github.com/Rimsoo/shortcut.git` 
-Only for you :
-`cp shortcut/shortcut.sh $HOME/.local/bin/shortcut`
-For all users :
-`sudo cp shortcut/shortcut.sh /usr/bin/shortcut`
-You can now delete the project :
+clone the project :  
+`git clone https://github.com/Rimsoo/shortcut.git`   
+Only for you :  
+`cp shortcut/shortcut.sh $HOME/.local/bin/shortcut`  
+For all users :  
+`sudo cp shortcut/shortcut.sh /usr/bin/shortcut`  
+You can now delete the project :  
 `rm -r shortcut/`
 
 ## Usage 
