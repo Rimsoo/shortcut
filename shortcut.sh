@@ -7,14 +7,14 @@ createDesktop()
     DIR_2=$(readlink -f  "${2}") 
     NAME_2=$(basename "${2}")
 
+	echo "Creating $NAME_1 command..."
 	echo -e "#!/bin/bash
 
 name=$3
 path=$DIR_1
 path2=$DIR_2"> "$HOME/.local/bin/$3"
-	echo 'if [[ -z $1 ]]; then
-	exec "$path"
-elif [[ $1 = "-u" ]]; then
+	echo '
+if [[ $1 = "-u" ]]; then
 	choice=n
 	while [ ! -z "$choice" ]
 	do
@@ -31,8 +31,11 @@ elif [[ $1 = "-u" ]]; then
 	rm -f "$HOME/.local/bin/$name"
 	echo "Done."
 elif [[ $1 = "-h" ]]; then
+	echo "Shortcut version : 0.2"
 	echo -e "\nUse -u to uninstall the shortcut:
 	$name -u\n"
+else 
+	exec "$path" "$@"
 fi' >> "$HOME/.local/bin/$3"
 	chmod 711 "$HOME/.local/bin/$3"
 
@@ -52,11 +55,11 @@ if [ -e $1 ]
 then
 	if [ $# -eq 3 ]  
 	then
-        if [ -e $3]
+        if [ -e $3 ]
         then
             if [ ${3: -4} == ".jpg" ] || [ ${3: -4} == ".png" ] || [ ${3: -4} == ".ico" ] || [ ${3: -4} == ".svg" ]
             then
-                createDesktop "$1" "$3" "$"
+                createDesktop "$1" "$3" "$2"
             else
                 echo "Third parameter need to be an icon.jpg/png/svg/ico file"
             fi
