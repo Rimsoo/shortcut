@@ -59,7 +59,15 @@ then
         then
             if [ ${3: -4} == ".jpg" ] || [ ${3: -4} == ".png" ] || [ ${3: -4} == ".ico" ] || [ ${3: -4} == ".svg" ]
             then
-                createDesktop "$1" "$3" "$2"
+				if [ -e "$HOME/.local/bin" ] && [ -d "$HOME/.local/bin" ]
+				then
+                	createDesktop "$1" "$3" "$2"
+				else
+					mkdir "$HOME/.local/bin"
+					echo -e '# added by : https://github.com/Rimsoo/shortcut
+export PATH="/home/'.$HOME.'/.local/bin:$PATH"' >> "$HOME/.bashrc"
+					createDesktop "$1" "$3" "$2"
+				fi
             else
                 echo "Third parameter need to be an icon.jpg/png/svg/ico file"
             fi
