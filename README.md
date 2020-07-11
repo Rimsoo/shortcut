@@ -15,10 +15,16 @@ You can now delete the project :
 
 ## Usage 
 ### Create shortcut 
-`shortcut executable name_of_shortcut [icon] `  
+Command and graphic shortcut :  
+`shortcut executable name_of_shortcut icon`  
 `executable` : The file to link to the shortcut  
 `name_of_shortcut` : The name of the shortcut to create (graphic and command)  
-`icon` : [Optional] The icon of the shortcut (format : .ico, .png, .jpg, .svg)
+`icon` : The icon of the shortcut (format : .ico, .png, .jpg, .svg)
+
+Only command  
+`shortcut executable name_of_shortcut`  
+`executable` : The file to link to the shortcut  
+`name_of_shortcut` : The name of the command shortcut to create  
 
 ### Delete shortcut
 `name_of_shortcut -u`
